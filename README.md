@@ -1,56 +1,80 @@
 # 🚀 sukangoding.id - Portfolio
 
 ![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen?style=for-the-badge)
-![Technology](https://img.shields.io/badge/Technology-HTML%20%7C%20CSS%20%7C%20TailwindCSS-blue?style=for-the-badge)
+![Technology](https://img.shields.io/badge/Built%20with-Astro-purple?style=for-the-badge)
+![TailwindCSS](https://img.shields.io/badge/Styled%20with-TailwindCSS-blue?style=for-the-badge)
 
 Halaman portofolio profesional untuk **sukangoding.id** — Fullstack Developer yang berfokus pada pengembangan aplikasi web dan mobile dengan teknologi modern.
 
 ## ✨ Fitur
 
-- 🌙 **Dark Mode Design** — Desain futuristik dengan tema gelap yang elegan
+- 🌙 **Dark Mode Design** — Desain futuristik dengan tema gelap
 - 📱 **Responsive** — Tampilan optimal di semua ukuran layar
-- ⚡ **Smooth Scrolling** — Navigasi halus antar section
+- ⚡ **Super Cepat** — Built dengan Astro (Zero JS by default)
 - 🎨 **Glassmorphism UI** — Efek kaca modern yang menarik
-- 💬 **WhatsApp Integration** — Form kontak terintegrasi langsung ke WhatsApp
-- 🔗 **Single Page Application** — Semua konten dalam satu halaman yang ringan
+- 💬 **WhatsApp Integration** — Form kontak langsung ke WhatsApp
+- 🚀 **Auto Deploy** — GitHub Actions untuk deployment otomatis
 
 ## 🛠️ Tech Stack
 
 | Teknologi | Kegunaan |
 |-----------|----------|
-| Laravel | Backend Framework |
-| PHP | Server-side Language |
-| Python | Automation & Scripting |
-| Golang | High-performance Services |
-| React | Frontend Library |
-| MySQL | Database |
+| Astro | Static Site Generator |
+| TailwindCSS v4 | Styling |
+| GitHub Actions | CI/CD |
 
-## 📂 Struktur
+## 📂 Struktur Project
 
 ```
 portofolio_project/
-├── index.html      # Halaman utama
-├── logo.jpg        # Logo/foto profil
-└── README.md       # Dokumentasi
+├── src/
+│   ├── components/      # Komponen Astro
+│   ├── layouts/         # Layout template
+│   ├── pages/           # Halaman
+│   └── styles/          # CSS global
+├── public/              # Asset statis
+├── .github/workflows/   # GitHub Actions
+└── astro.config.mjs     # Konfigurasi Astro
 ```
 
-## 🚀 Deployment ke GitHub Pages
+## 🚀 Development
 
-1. **Push repository ke GitHub:**
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📦 Deployment ke GitHub Pages
+
+1. **Update `astro.config.mjs`:**
+   ```javascript
+   export default defineConfig({
+     site: 'https://<username>.github.io',
+     base: '/<repository-name>', // jika bukan username.github.io
+   });
+   ```
+
+2. **Push ke GitHub:**
    ```bash
    git add .
-   git commit -m "Initial commit"
+   git commit -m "Deploy Astro portfolio"
    git push origin main
    ```
 
-2. **Aktifkan GitHub Pages:**
+3. **Aktifkan GitHub Pages:**
    - Buka **Settings** → **Pages**
-   - Pilih **Source**: `Deploy from a branch`
-   - Pilih **Branch**: `main` dan folder `/ (root)`
-   - Klik **Save**
+   - Pilih **Source**: `GitHub Actions`
 
-3. **Akses website:**
-   - Website Anda akan tersedia di: `https://<username>.github.io/<repository-name>/`
+Website akan otomatis di-deploy setiap push ke branch main.
 
 ## 📧 Kontak
 

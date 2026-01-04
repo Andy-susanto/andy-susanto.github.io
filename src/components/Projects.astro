@@ -1,0 +1,66 @@
+---
+const projects = [
+    {
+        title: 'Dasbor Kripto',
+        description: 'Dasbor waktu nyata yang memvisualisasikan tren kripto menggunakan CoinGecko API.',
+        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAZFodkJtNBiLCcjS7yQFpkujw_k3IcNiOqXRQekINi-ons0gfSAYdJvVPDpdDlA63uistZ5PBt3FmU5y8qHjllmsjUmfQSpEd8OKBHawvL2GKTJy3ubc7IAKkCAvzbU1l5LtkvN93FJeOJxdgLTThRwnb5bX0fWL4M9ng_04b5elAEoBeY2UL5gpx4J3JdM1_jnSTJvuH4epGTOmNohpDlMtSI76Mow1QFmm8dKOqi6zJxsad0TYQaMlQn-KQnuI6RGeFn4eLVQrZ-',
+        tags: ['React', 'ChartJS', 'API'],
+        color: 'orange'
+    },
+    {
+        title: 'API E-Commerce',
+        description: 'RESTful API yang tangguh untuk platform ritel online dengan gateway pembayaran aman.',
+        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDoZ7J6Pvha7kcrGD4IRIxnZHUmWN9Gc7x8IW65qqVSzWmOwCjf4VqiT6E67xuJs4nCOhONhrsj4vB4kHpPf6-8_kI3L_oe3wqgMJ-54v6dObNovpxstlrsAhOqpNYglGoLT8lw6bPt3QIGHy5lVq6d4ypWD06hONHNQ-KQOe_eY2EI8Pooxsoy-7Vyok-MFiLZlHdeVidBc3ir3pvqFuvc6UrQovzrFzU75fbQbohIyKw7HfUoHazJJfs804qeiNSAWLeExn1zDfHY',
+        tags: ['NodeJS', 'Express', 'MongoDB'],
+        color: 'pink'
+    },
+    {
+        title: 'Nebula Banking',
+        description: 'Antarmuka perbankan futuristik dengan efek glassmorphism dan interaksi mikro.',
+        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDPaKET5vsxrDGwb1KEjCZgGq--qAVTJ-ahvzSNJZiD9GRG9w1OoHYHRGWZy8U0EVEzYyuFN2dui6OLFLMjySusqVL3qidFq6QLY_6ZZ4-ZT6Hx4V6an0f_AMTFHLqwY6noSphf91RyCZ5tfTypaHHLjCxyemj5xgNpufX_J_a82LssXxk-p2CQNjIfCqanfs5Vq4x16QS67HTqIW69pQWhBb46zl7TjaXycxiALqgXfnJDYY6DHoPOixJ-CGvJnX3eoVoVDZd2NTJv',
+        tags: ['Vue', 'Tailwind', 'UI/UX'],
+        color: 'blue'
+    }
+];
+
+const colorClasses = {
+    orange: { border: 'hover:border-brand-orange', shadow: 'hover:shadow-[0_0_20px_rgba(251,191,36,0.15)]', text: 'group-hover:text-brand-orange', tag: 'bg-brand-orange/10 text-brand-orange border-brand-orange/20' },
+    pink: { border: 'hover:border-brand-pink', shadow: 'hover:shadow-[0_0_20px_rgba(244,63,94,0.15)]', text: 'group-hover:text-brand-pink', tag: 'bg-brand-pink/10 text-brand-pink border-brand-pink/20' },
+    blue: { border: 'hover:border-brand-blue', shadow: 'hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]', text: 'group-hover:text-brand-blue', tag: 'bg-brand-blue/10 text-brand-blue border-brand-blue/20' },
+};
+---
+
+<section id="proyek" class="py-20 px-4 md:px-10 relative">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
+            <div class="flex flex-col gap-4 max-w-2xl">
+                <h2 class="text-white text-4xl md:text-5xl font-bold leading-tight tracking-tight">Portofolio <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-orange">Proyek</span></h2>
+                <p class="text-gray-400 text-lg font-normal leading-relaxed max-w-xl font-body">Koleksi proyek pilihan yang mengeksplorasi perpaduan desain futuristik, kode yang bersih, dan pengalaman pengguna yang optimal.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {projects.map((project) => {
+                const colors = colorClasses[project.color as keyof typeof colorClasses];
+                return (
+                    <article class={`group flex flex-col bg-card-dark rounded-xl overflow-hidden border border-border-dark ${colors.border} transition-all duration-300 ${colors.shadow} hover:-translate-y-1`}>
+                        <div class="relative w-full aspect-video overflow-hidden">
+                            <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={`background-image: url("${project.image}");`}></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent opacity-80"></div>
+                        </div>
+                        <div class="flex flex-col flex-1 p-5 gap-4">
+                            <div>
+                                <h3 class={`text-white text-xl font-bold tracking-tight ${colors.text} transition-colors`}>{project.title}</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed font-body line-clamp-2 mt-2">{project.description}</p>
+                            </div>
+                            <div class="mt-auto flex flex-wrap gap-2">
+                                {project.tags.map((tag, index) => (
+                                    <span class={`px-2.5 py-1 rounded text-xs font-medium ${index === 0 ? colors.tag + ' border' : 'bg-border-dark text-gray-300'}`}>{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </article>
+                );
+            })}
+        </div>
+    </div>
+</section>
